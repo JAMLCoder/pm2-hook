@@ -39,6 +39,8 @@ Options:
 | action | `string` | "pullAndReload" | no | `pullAndRestart` |
 | pre_hook | `string` | "npm run stop" | no | |
 | post_hook | `string` | "npm run generate_docs" | no | |
+| request_branch | `string` | "data.request.data" | no | `push.changes[0].new.name` |
+
 
 Some notes:
 
@@ -71,6 +73,21 @@ If your process has been already started, first kill it using the command `pm2 d
 Start your processes with `pm2 start ecosystem.json`.
 
 That's it. Each time you push to your repository, this module runs `pm2 <action> <app name>`.
+
+## Example request
+
+
+```
+POST http://example.com:27777/webhook
+
+{
+  "data" : {
+    "request" : {
+        "data" : "BRANCH_SERVER"
+    }
+  }
+}
+```
 
 ## Copyright and license
 
