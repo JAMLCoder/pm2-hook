@@ -25,7 +25,6 @@ Your repository page → Settings → Webhooks & services → Add webhook
 |:---:|:---:|
 | Payload URL | http://example.com:27777/webhook |
 | Content Type | application/json |
-| Secret | some secret phrase |
 
 ### PM2 config
 
@@ -35,12 +34,10 @@ Options:
 |:---:|:---:|:---:|:---:|:---:|
 | port | `number` | 27777 | yes | |
 | path | `string` | "/webhook" | no | `/` |
-| secret | `string` | "some secret phrase" | no | |
 | action | `string` | "pullAndReload" | no | `pullAndRestart` |
 | pre_hook | `string` | "npm run stop" | no | |
 | post_hook | `string` | "npm run generate_docs" | no | |
 | request_branch | `string` | "data.request.data" | no | `push.changes[0].new.name` |
-
 
 Some notes:
 
@@ -58,7 +55,6 @@ Add environment variables in your [ecosystem.json](http://pm2.keymetrics.io/docs
             "env_webhook": {
                 "port": 23928,
                 "path": "/webhook",
-                "secret": "some secret phrase",
                 "action": "pullAndReload",
                 "pre_hook": "npm run stop",
                 "post_hook": "npm run generate_docs"
